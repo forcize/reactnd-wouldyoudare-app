@@ -3,3 +3,33 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.container{
+  max-width: 700px;
+}
+
+p {
+	margin-bottom: 0;
+}
+
+.user-avatar{
+  width: 150px;
+  height: 130px;
+}
+
+li {
+	list-style: none;
+}
+
+.logout a {
+	color: #fff;
+	border: 1px solid;
+	border-radius: 4px;
+	padding: 8px;
+	font-size: 14px;
+}
+
+.logout {
+	margin-top: 7px;
+	margin-left: 100px;
+}

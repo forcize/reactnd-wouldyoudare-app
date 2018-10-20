@@ -1,41 +1,45 @@
-# Components
+# Components Distribution
 
 ## Navigation [Top Bar]
-Questions Lists [Homepage]
-Question [Homepage] [View Poll]
-New Question [New Question
-Leader Board List [LeaderBoard
-User [ Leader Board]
+1. Questions Lists [Homepage]
+2. Question [Homepage] [View Poll]
+3. New Question [New Question]
+3. Leader Board [Leader Board]
+3. User [Leader Board]
 
 ## Top Bar
--> Navigation
--> Home
--> New Question
--> Leader Board
--> Display Name at Top
--> Profile Picture
--> Logout Button
+1. Navigation
+2. Home
+3. New Question
+4. Leader Board
+5. Display Name at Top
+6. Profile Picture
+7. Logout Button
 
 ## View Poll [questions/:question_id]
--> Shows Questions Made by Users “Would you Rather”
--> Here you can pick one of the answers and submit
--> Upon picking an option and submitting the option, show result, green state
--> Bars should have vote %
+1. Shows Questions Made by Users “Would you Rather”
+2. Here you can pick one of the answers and submit
+3. Upon picking an option and submitting the option, show result, green state
+4. Bars should have vote %
 
 ## Homepage
-
--> Unanswered Questions
--> Answered Questions
+1. Unanswered Questions
+2. Answered Questions
 
 ## Sign in
--> You pick one of the users
+1. You pick one of the users
 
 ## New question [/add]
--> Title: Create New Question
--> Ask would you rather option 1 and option 2
+1. Title: Create New Question
+2. Ask would you rather option 1 and option 2
+3. Leader Board [/leaderboard]
+4. Display Users
+5. Answered Questions
+6. Created questions
+7. Score = Sum of Answered + Created
 
--> Leader Board [/leaderboard]
--> Display Users
--> Answered Questions
--> Created questions
--> Score = Sum of Answered + Created
+# The Store
+
+1. Questions
+2. Users
+3. authedUser

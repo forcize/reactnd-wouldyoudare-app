@@ -1,0 +1,50 @@
+{
+    "Version": 1,
+    "UUID": "28fcbff4-8d2f-494c-a2c5-9dd845f1ab5a",
+    "Name": "Humm",
+    "Properties": {
+        "description": "Experimental Application Sandbox",
+        "language": "en"
+    },
+    "PropertiesSchemaFile": "properties_schema.json",
+    "BasedOn": "",
+    "RequiresVersion": 0,
+    "DHTConfig": {
+        "HashType": "sha2-256",
+        "RedundancyFactor": 0
+    },
+    "Zomes": [
+             {
+            "Name": "Messages",
+            "Description": "Sign and publish messages in DHT",
+            "CodeFile": "Messages.js",
+            "RibosomeType": "js",
+            "Entries": [
+                {
+                    "Name": "Message",
+                    "DataFormat": "json",
+                    "Schema": "",
+                    "SchemaFile": "Message.json",
+                    "Sharing": "public"
+                },
+                {
+                    "Name": "messages_link",
+                    "DataFormat": "links",
+                    "Sharing":"public"
+              }
+            ],
+            "Functions": [
+                {
+                    "Name": "MessageCreate",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                },
+                {
+                    "Name": "GetMessages",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                }
+            ]
+        }
+    ]
+}
