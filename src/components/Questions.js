@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { richQuestions } from '../includes/api'
-import { questionExist } from '../includes/api'
+import { richQuestions, questionExist } from '../includes/api'
+import PropTypes from 'prop-types'
 import { AddQuestionAnswer } from '../actions/questions'
 import { Button, Card, ProgressBar } from 'react-bootstrap'
 import { Link, Redirect } from 'react-router-dom'
@@ -35,7 +35,7 @@ class Questions extends Component {
     const { toHome } = this.state
 
     if (question === null) {
-      return <p>This question doesn't exist</p>
+      return <p>This question doesn&apos;t exist</p>
     }
 
     if (toHome === true) {
@@ -55,7 +55,7 @@ class Questions extends Component {
               <Card.Text>
                 {question.optionOne.text} or...
               </Card.Text>
-              <Link to={`/question/${question.id}`}><Button variant="primary">View</Button></Link>
+              <Link to={`/question/${question.id}`}><Button variant="primary" className="mt-3">View</Button></Link>
             </Card.Body>
           </Card>
         ) : this.props.layout === "single" && questionExist(question, question.authedUser) ? (
@@ -66,12 +66,16 @@ class Questions extends Component {
                 <Card.Title>Would you rather?...</Card.Title>
                 <img alt="Avatar" className ="float-left pr-3 user-avatar mr-3" src={question.avatarURL}></img>
                 <div className="content float-left">
-                  {question.optionOne.text} {userVote === "questionOne" && <span><strong>(Your Vote)</strong></span>}
-                  <ProgressBar now={question.optionOne.votes.length} max={question.optionOne.votes.length + question.optionTwo.votes.length} />
-                  <p>Votes: {question.optionOne.votes.length} of {question.optionOne.votes.length + question.optionTwo.votes.length} </p>
-                  {question.optionTwo.text} {userVote === "questionTwo" && <span><strong>(Your Vote)</strong></span>}
-                  <ProgressBar now={question.optionTwo.votes.length} max={question.optionOne.votes.length + question.optionTwo.votes.length} />
-                  <p>Votes: {question.optionTwo.votes.length} of {question.optionOne.votes.length + question.optionTwo.votes.length} </p>
+                  <div className="option-1 mb-3">
+                    {question.optionOne.text} {userVote === "questionOne" && <span><strong>(Your Vote)</strong></span>}
+                    <ProgressBar now={question.optionOne.votes.length} max={question.optionOne.votes.length + question.optionTwo.votes.length} />
+                    <p>Votes: {question.optionOne.votes.length} of {question.optionOne.votes.length + question.optionTwo.votes.length} </p>
+                  </div>
+                  <div className="option-2 mb-3">
+                    {question.optionTwo.text} {userVote === "questionTwo" && <span><strong>(Your Vote)</strong></span>}
+                    <ProgressBar now={question.optionTwo.votes.length} max={question.optionOne.votes.length + question.optionTwo.votes.length} />
+                    <p>Votes: {question.optionTwo.votes.length} of {question.optionOne.votes.length + question.optionTwo.votes.length} </p>
+                  </div>
                 </div>
               </Card.Body>
             </form>
@@ -96,7 +100,7 @@ class Questions extends Component {
                       {question.optionTwo.text}
                     </label>
                   </div>
-                  <Button variant="primary" type="submit">Submit</Button>
+                  <Button className="mt-3" variant="primary" type="submit">Submit</Button>
                 </div>
               </Card.Body>
             </form>
@@ -110,6 +114,12 @@ class Questions extends Component {
     );
   }
 }
+
+Questions.propTypes = {
+  dispatch: PropTypes.func,
+  question: PropTypes.object,
+  layout: PropTypes.string
+};
 
 function mapStateToProps({ questions, users, authedUser }, {id}){
   const question = questions[id];

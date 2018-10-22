@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Questions from './Questions';
+import PropTypes from 'prop-types'
 
 class QuestionPage extends Component {
   render() {
@@ -11,5 +12,9 @@ class QuestionPage extends Component {
     );
   }
 }
+
+QuestionPage.propTypes = {
+  match: PropTypes.object
+};
 
 export default connect()(QuestionPage);

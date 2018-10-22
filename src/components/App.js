@@ -10,6 +10,7 @@ import Leaderboard from './Leaderboard'
 import Login from './Login'
 import Navigation from './Nav'
 import NewQuestion from './NewQuestion'
+import PropTypes from 'prop-types'
 
 class App extends Component {
   componentDidMount () {
@@ -44,11 +45,25 @@ class App extends Component {
               </Col>
             </Row>
           </Container>
+          <footer>
+            <Container className="mt-5 mb-4">
+              <Row>
+                <Col md={12} className="align-self-center">
+                  <div >Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank"  rel="noopener noreferrer">CC 3.0 BY</a></div>
+                </Col>
+              </Row>
+            </Container>
+          </footer>
         </React.Fragment>
       </Router>
     )
   }
 }
+
+App.propTypes = {
+  dispatch: PropTypes.func,
+  authedUser: PropTypes.string
+};
 
 function mapStateToProps ({ authedUser }) {
   return {

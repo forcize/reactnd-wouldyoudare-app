@@ -47,8 +47,7 @@ export function AddQuestionAnswer (answer) {
   return (dispatch) => {
     dispatch(receiveQuestionAnswer(answer))
     return saveQuestionAnswer(answer)
-      .catch((e) => {
-        console.warn('Error in Saving Answer! ', e)
+      .catch(() => {
         dispatch(receiveQuestionAnswer(answer))
       })
   }

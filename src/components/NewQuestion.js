@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Button, Card, Form } from 'react-bootstrap'
+import PropTypes from 'prop-types'
 import { handleNewQuestion } from '../actions/questions'
 import { Redirect } from 'react-router-dom'
 
@@ -42,13 +43,13 @@ class NewQuestion extends Component {
           <Card.Header>Create New Question</Card.Header>
           <Card.Body>
             <Card.Title>Would you rather?...</Card.Title>
-              <Form.Group controlId="questionOne">
-                <Form.Control type="text" placeholder="Enter the text for the first question" onChange={this.handleChange} name="questionOne" />
-              </Form.Group>
-              <strong>OR</strong>
-              <Form.Group controlId="questionTwo">
-                <Form.Control type="text" placeholder="Enter the text for the second question" onChange={this.handleChange} name="questionTwo" />
-              </Form.Group>
+            <Form.Group className="mt-3" controlId="questionOne">
+              <Form.Control type="text" placeholder="Enter the text for the first question" onChange={this.handleChange} name="questionOne" />
+            </Form.Group>
+            <strong>OR</strong>
+            <Form.Group className="mt-3" controlId="questionTwo">
+              <Form.Control type="text" placeholder="Enter the text for the second question" onChange={this.handleChange} name="questionTwo" />
+            </Form.Group>
             <Button variant="primary" type="submit">Submit</Button>
           </Card.Body>
         </Card>
@@ -56,6 +57,10 @@ class NewQuestion extends Component {
     )
   }
 }
+
+NewQuestion.propTypes = {
+  dispatch: PropTypes.func,
+};
 
 function mapStateToProps ({ authedUser }) {
   return {

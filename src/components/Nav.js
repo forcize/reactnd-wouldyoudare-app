@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Navbar from 'react-bootstrap/lib/Navbar'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Nav from 'react-bootstrap/lib/Nav'
-import { Container, Row } from 'react-bootstrap'
+import { Container, Row, Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { LogoutAuthUser } from '../actions/authedUser'
+
 class Navigation extends Component {
 
   handleSubmit = () => {
@@ -25,7 +27,7 @@ class Navigation extends Component {
             </Nav>
             {this.props.authedUser !== null &&
               <div className="logout">
-                <button onClick={()=> this.handleSubmit()}>{this.props.authedUser} (Logout)</button>
+                <Button variant="danger" onClick={()=> this.handleSubmit()}>{this.props.authedUser} (Logout)</Button>
               </div>
             }
           </Row>
@@ -36,7 +38,14 @@ class Navigation extends Component {
   }
 }
 
-function mapStateToProps({authedUser }){
+Navigation.propTypes = {
+  dispatch: PropTypes.func,
+  authedUser: PropTypes.string
+
+};
+
+
+function mapStateToProps({authedUser}){
   return {authedUser}
 }
 

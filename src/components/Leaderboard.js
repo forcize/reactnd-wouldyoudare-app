@@ -1,40 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, CardGroup } from 'react-bootstrap';
+import PropTypes from 'prop-types'
 
 class Leaderboard extends Component {
   render() {
     return (
-      <div>
-        <CardGroup>
-          {this.props.usersObj.map(user => (
-            <Card key={user.id}>
-              <Card.Img variant="top" src="holder.js/100px160" />
-              <Card.Body>
-                <Card.Title>{user.name}</Card.Title>
-                <Card.Text>
-                  <p>
-Voted:
-                    {user.answers}
-                  </p>
-                  <p>
-Questions:
-                    {user.questions}
-                  </p>
-                  <p>
-Total:
-                    {user.total}
-                  </p>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          ))}
-        </CardGroup>
-      </div>
-
+      <CardGroup className="leaderboard">
+        {this.props.usersObj.map(user => (
+          <Card key={user.id}>
+            <Card.Img variant="top" src="images/avatar.svg" />
+            <Card.Body>
+              <Card.Title>{user.name}</Card.Title>
+              <p> Voted: {user.answers} </p>
+              <p> Questions: {user.questions} </p>
+              <p> Total: {user.total} </p>
+            </Card.Body>
+          </Card>
+        ))}
+      </CardGroup>
     );
   }
 }
+
+Leaderboard.propTypes = {
+  usersObj: PropTypes.array
+};
 
 function mapStateToProps({ users }) {
   const id = Object.keys(users);

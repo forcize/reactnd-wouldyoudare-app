@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Tab, Tabs } from 'react-bootstrap';
 import Questions from './Questions';
 import { sortTabs } from '../includes/api';
+import PropTypes from 'prop-types'
 
 class Home extends Component {
   render() {
@@ -12,16 +13,16 @@ class Home extends Component {
           <Tabs variant="pills" defaultActiveKey="answered" id="tabbed-questions" className="nav-fill">
             <Tab eventKey="answered" title="Answered" className="mt-4">
               {this.props.result.map(question => question.vote !== false && (
-              <li className="mb-3" key={question.id}>
-                <Questions id={question.id} layout="home" />
-              </li>
+                <li className="mb-3" key={question.id}>
+                  <Questions id={question.id} layout="home" />
+                </li>
               ))}
             </Tab>
             <Tab eventKey="unanswered" title="Not Answered" className="mt-4">
               {this.props.result.map(question => question.vote === false && (
-              <li className="mb-3" key={question.id}>
-                <Questions id={question.id} layout="home" />
-              </li>
+                <li className="mb-3" key={question.id}>
+                  <Questions id={question.id} layout="home" />
+                </li>
               ))}
             </Tab>
           </Tabs>
@@ -30,6 +31,10 @@ class Home extends Component {
     );
   }
 }
+
+Home.propTypes = {
+  result: PropTypes.array
+};
 
 function mapStateToProps({ questions, authedUser }) {
   return sortTabs(questions, authedUser);

@@ -34,7 +34,7 @@ export function sortTabs(questions, authedUser) {
       questionObject.timestamp = questions[key].timestamp;
       result.push(questionObject);
     }
-    result.sort((a, b) => new Date(b.date) - new Date(a.date));
+    result.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
   });
 
   return { result };

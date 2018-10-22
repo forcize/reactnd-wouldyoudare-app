@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { LoginAuthUser } from '../actions/authedUser'
 import { Dropdown } from 'react-bootstrap'
+import PropTypes from 'prop-types'
 
 class Login extends Component {
+
   handleSubmit = (userid) => {
     const { dispatch } = this.props
     dispatch( LoginAuthUser(userid))
   }
+
   render() {
     const { users } = this.props
     return (
@@ -30,7 +33,13 @@ class Login extends Component {
   }
 }
 
-function mapStateToProps({users, authedUser}){
+Login.propTypes = {
+  dispatch: PropTypes.func,
+  users: PropTypes.array
+
+};
+
+function mapStateToProps({users}){
   const usersId = Object.keys(users)
   const userArr = usersId.map((userid) =>{
     return {id: users[userid].id, name: users[userid].name }

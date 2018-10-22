@@ -8,6 +8,42 @@ body {
   max-width: 700px;
 }
 
+.leaderboard .card:first-child::before {
+	background: #007bff;
+  width: 35px;
+  height: 24px;
+  content: "1st";
+  color: #fff;
+  padding-left: 7px;
+}
+
+.leaderboard .card:first-child + .card::before {
+	background: #999;
+  width: 40px;
+  height: 24px;
+  content: "2nd";
+  color: #fff;
+  padding-left: 7px;
+}
+
+.leaderboard .card:first-child + .card + .card::before {
+	background: #999;
+  width: 40px;
+  height: 24px;
+  content: "3rd";
+  color: #fff;
+  padding-left: 7px;
+}
+
+.card-img-top {
+	width: 50%;
+	text-align: center;
+	/* vertical-align: middle; */
+	display: block;
+	margin: auto;
+	padding-top: 13px;
+}
+
 p {
 	margin-bottom: 0;
 }
@@ -30,6 +66,6 @@ li {
 }
 
 .logout {
-	margin-top: 7px;
-	margin-left: 100px;
+	margin-top: 0px;
+	margin-left: 90px;
 }
