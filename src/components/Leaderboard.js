@@ -9,7 +9,7 @@ class Leaderboard extends Component {
       <CardGroup className="leaderboard">
         {this.props.usersObj.map(user => (
           <Card key={user.id}>
-            <Card.Img variant="top" src="images/avatar.svg" />
+            <Card.Img variant="top" src={user.avatar} />
             <Card.Body>
               <Card.Title>{user.name}</Card.Title>
               <p> Voted: {user.answers} </p>
@@ -27,7 +27,7 @@ Leaderboard.propTypes = {
   usersObj: PropTypes.array
 };
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users}) {
   const id = Object.keys(users);
 
   const usersObj = id.map(id => ({
@@ -36,6 +36,7 @@ function mapStateToProps({ users }) {
     answers: Object.keys(users[id].answers).length,
     questions: users[id].questions.length,
     total: Object.keys(users[id].answers).length + users[id].questions.length,
+    avatar: users[id].avatarURL
   }));
 
   usersObj.sort((a, b) => a.total < b.total);
