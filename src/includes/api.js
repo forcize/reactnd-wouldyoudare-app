@@ -28,12 +28,10 @@ export function sortTabs(questions, authedUser) {
   const result = [];
   Object.keys(questions).forEach((key) => {
     const questionObject = {};
-    if (questions[key].author !== authedUser) {
       questionObject.vote = questionExist(questions[key], authedUser);
       questionObject.id = key;
       questionObject.timestamp = questions[key].timestamp;
       result.push(questionObject);
-    }
     result.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
   });
 
