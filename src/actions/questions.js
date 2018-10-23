@@ -1,4 +1,3 @@
-import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import { saveQuestion, saveQuestionAnswer } from '../includes/api'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
@@ -31,24 +30,20 @@ function receiveQuestionAnswer ({ authedUser, qid, answer }) {
 export function handleNewQuestion (optionOneText, optionTwoText) {
   return (dispatch, getState) => {
     const { authedUser } = getState()
-    dispatch(showLoading())
-
     return saveQuestion({
       author: authedUser,
       optionOneText,
       optionTwoText
     })
       .then(question => dispatch(addNewQuestion(question)))
-      .then(() => dispatch(hideLoading()))
   }
 }
 
-export function AddQuestionAnswer (answer) {
+export function AddQuestionAnswer(answer) {
   return (dispatch) => {
-    dispatch(receiveQuestionAnswer(answer))
     return saveQuestionAnswer(answer)
-      .catch(() => {
+      .then(data =>
         dispatch(receiveQuestionAnswer(answer))
-      })
+      )
   }
 }
