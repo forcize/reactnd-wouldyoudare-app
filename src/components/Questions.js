@@ -2,21 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { richQuestions, questionExist } from '../includes/api'
 import PropTypes from 'prop-types'
-import { AddQuestionAnswer } from '../actions/questions'
+import { voteQuestionHandler } from '../actions/shared'
 import { Button, Card, ProgressBar } from 'react-bootstrap'
 import { Link, Redirect } from 'react-router-dom'
 
 class Questions extends Component {
 
   state = {
-    questionAnswer: '',
+    questionAnswer: 'optionOne',
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
     const { questionAnswer } = this.state
     const { dispatch } = this.props
-    dispatch(AddQuestionAnswer({authedUser: this.props.question.authedUser, qid: this.props.question.id, answer: questionAnswer}))
+    dispatch(voteQuestionHandler({authedUser: this.props.question.authedUser, qid: this.props.question.id, answer: questionAnswer}))
     this.setState(() => ({
       questionAnswer: ''
     }))

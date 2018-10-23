@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Button, Card, Form } from 'react-bootstrap'
 import PropTypes from 'prop-types'
-import { handleNewQuestion } from '../actions/questions'
+import { newQuestionHandler } from '../actions/shared'
 import { Redirect } from 'react-router-dom'
 
 class NewQuestion extends Component {
@@ -16,7 +16,7 @@ class NewQuestion extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     const { dispatch } = this.props
-    dispatch(handleNewQuestion(this.state.questionOne, this.state.questionTwo))
+    dispatch(newQuestionHandler(this.state.questionOne, this.state.questionTwo))
     this.setState(() => ({
       questionOne: "",
       questionTwo: "",
@@ -37,6 +37,10 @@ class NewQuestion extends Component {
     if (this.state.redirect === true) {
       return <Redirect to='/' />
     }
+
+    const { questionOne, questionTwo } = this.state;
+    const submitEnabled = questionOne.length > 0 && questionTwo.length > 0;
+
     return (
       <Form onSubmit={this.handleSubmit}>
         <Card>
@@ -50,7 +54,7 @@ class NewQuestion extends Component {
             <Form.Group className="mt-3" controlId="questionTwo">
               <Form.Control type="text" placeholder="Enter the text for the second question" onChange={this.handleChange} name="questionTwo" />
             </Form.Group>
-            <Button variant="primary" type="submit">Submit</Button>
+            <Button variant="primary" type="submit" disabled={!submitEnabled}>Submit</Button>
           </Card.Body>
         </Card>
       </Form>
