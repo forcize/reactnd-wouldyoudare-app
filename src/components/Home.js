@@ -12,14 +12,14 @@ class Home extends Component {
         <ul className="questions p-0">
           <Tabs variant="pills" defaultActiveKey="unanswered" id="tabbed-questions" className="nav-fill">
             <Tab eventKey="unanswered" title="Not Answered" className="mt-4">
-              {this.props.result.map(question => question.vote !== false && (
+              {this.props.result.map(question => question.vote === false && (
                 <li className="mb-3" key={question.id}>
                   <Questions id={question.id} layout="home" />
                 </li>
               ))}
             </Tab>
             <Tab eventKey="answered" title="Answered" className="mt-4">
-              {this.props.result.map(question => question.vote === false && (
+              {this.props.result.map(question => question.vote !== false && (
                 <li className="mb-3" key={question.id}>
                   <Questions id={question.id} layout="home" />
                 </li>
