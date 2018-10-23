@@ -2,7 +2,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Would You Dare is a project submission for the ReactJS Nanodegree program in Udacity. It's a sample application designed to demonstrate how easy it is to build applications with ReactJS and Redux.
-
+ 
 If you would like to simply download a build of the latest version, download and unzip the [latest release](https://github.com/forcize/reactnd-wouldyoudare-app/releases)
 
 ## Important
